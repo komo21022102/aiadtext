@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang='zh-Hant'>
+<head>
+<meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>左右大腦對決 AI 實戰教育訓練</title>
+<meta name="description" content="兩週 AI 實戰教育訓練：從題目到上線，封裝成可重複使用的 SKILL 工具。含部署、SEO 與 GA4 指引。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#e8edf4">
+<link rel="icon" href="/favicon.ico">
+<style>
+:root{--color-blue:#4A90E2;--color-blue-light:#E8F0FE;--color-blue-dark:#2E5DC8;--color-text:#1A1A2E;--color-light-bg:#F8F9FB;--color-border:#E0E0E0;font-family:Inter,'Segoe UI','Helvetica Neue',Arial,sans-serif;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:#fafbfc;color:var(--color-text);}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;left:auto;top:auto;padding:8px 12px;border-radius:6px;background:var(--color-blue);color:#fff;z-index:999}
+.hero-section{background:#fafbfc;padding:120px 24px 80px;text-align:center;position:relative;overflow:hidden;}
+.hero-section::before{content:'';position:absolute;top:-50%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(74,144,226,0.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.hero-section::after{content:'';position:absolute;bottom:-30%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(74,144,226,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.hero-content{max-width:800px;margin:0 auto;position:relative;z-index:1;}
+.hero-section h1{font-size:3rem;font-weight:700;letter-spacing:-0.02em;margin:0 0 20px;color:var(--color-text);line-height:1.2;}
+.hero-section h1 strong{color:var(--color-blue);font-weight:700;}
+.hero-section .subtitle{font-size:1.15rem;color:#666;margin:0 0 50px;font-weight:400;line-height:1.6;}
+.hero-section .cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
+.btn{display:inline-block;padding:11px 28px;border-radius:6px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all 0.3s ease;font-size:0.95rem;}
+.btn-primary{background:var(--color-blue);color:#fff;}
+.btn-primary:hover{background:var(--color-blue-dark);transform:translateY(-2px);box-shadow:0 8px 16px rgba(74,144,226,0.3);}
+.btn-secondary{background:#fff;color:var(--color-blue);border:2px solid var(--color-blue);}
+.btn-secondary:hover{background:var(--color-blue-light);}
+.container{max-width:1000px;margin:0 auto;padding:80px 24px;}
+.content-section{margin-bottom:100px;}
+h1{font-size:2.5rem;font-weight:700;margin:0 0 0.4em;color:var(--color-text);line-height:1.2;}
+h2{font-size:1.8rem;font-weight:700;margin:2.5em 0 1.2em;color:var(--color-text);line-height:1.3;}
+h2::before{content:'';}
+h3{font-size:1.1rem;font-weight:600;margin:1.5em 0 0.8em;color:var(--color-text);}
+p{margin:0 0 1.2em;font-size:1rem;line-height:1.7;color:#555;}
+strong{color:var(--color-blue);font-weight:700;}
+blockquote{border-left:4px solid var(--color-blue);background:var(--color-blue-light);padding:20px 24px;margin:28px 0;border-radius:8px;color:#333;font-style:italic;}
+ul,ol{margin:0 0 1.3em 1.8em;padding:0;}
+li{margin:0.8em 0;color:#555;}
+hr{border:none;border-top:1px solid var(--color-border);margin:60px 0;}
+pre{background:#1f2937;color:#e5e7eb;padding:20px;overflow:auto;border-radius:8px;font-size:0.9rem;margin:24px 0;}
+code{background:#f0f0f0;color:#e63946;font-size:0.95rem;padding:4px 8px;border-radius:4px;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin:50px 0;}
+.stat-card{padding:28px 24px;border-radius:10px;text-align:center;background:#fff;border:1px solid var(--color-border);}
+.stat-card .stat-number{font-size:2.2rem;font-weight:800;margin-bottom:8px;color:var(--color-blue);}
+.stat-card .stat-label{font-size:0.9rem;color:#666;line-height:1.4;}
+.stat-yellow{background:#FFF8DC;border-color:#FFE8A8;}
+.stat-green{background:#E8F5E9;border-color:#C8E6C9;}
+.stat-blue{background:var(--color-blue-light);border-color:#BBDEFB;}
+.stat-orange{background:#FFEEE8;border-color:#FFCCBB;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:28px 0;background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--color-border);}
+th,td{padding:14px 18px;text-align:left;}
+th{background:#f5f7fa;color:var(--color-text);font-weight:600;border-bottom:1px solid var(--color-border);}
+td{background:#fff;border-bottom:1px solid var(--color-border);color:#555;}
+tbody tr:hover td{background:#f9f9f9;}
+tr:last-child td{border-bottom:none;}
+@media (max-width:768px){
+  .hero-section{padding:80px 20px 60px;}
+  .hero-section h1{font-size:2.2rem;}
+  .hero-section .subtitle{font-size:1rem;}
+  .hero-section::before{width:300px;height:300px;}
+  .container{padding:60px 20px;}
+  h1{font-size:2rem;}
+  h2{font-size:1.4rem;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+  th,td{padding:12px 14px;font-size:0.9rem;}
+  .btn{padding:10px 24px;font-size:0.9rem;}
+}
+</style>
+<!-- GA4 placeholder: 替換 G-XXXXXXX 為你的測量 ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);} 
+	gtag('js', new Date());
+	gtag('config', 'G-XXXXXXX', { 'anonymize_ip': true });
+</script>
+<style>
+/* Screen-reader only */
+.sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}}
+</style>
+<!-- Structured data for basic SEO -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"左右大腦對決 AI 實戰教育訓練","description":"兩週 AI 實戰教育訓練：從題目到上線，封裝成可重複使用的 SKILL 工具。"}</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">跳到主要內容</a>
+<section class="hero-section">
+<div class="hero-content">
+<h1>教育訓練<strong>無須</strong>從零開始</h1>
+<p class="subtitle">我們會教你完整循環——從題目到上線，封裝成<strong>可重複使用</strong>的 SKILL 工具</p>
+<div class="cta-group">
+<a href="#overview" class="btn btn-primary">開始訓練</a>
+<a href="#scoring" class="btn btn-secondary">評分維度</a>
+</div>
+</div>
+</section>
+<main id="main-content" role="main">
+<div class="container">
+<section class="content-section">
+<h2>訓練的價值</h2>
+<div class="stats-grid">
+<div class="stat-card stat-yellow">
+<span class="stat-number">2</span>
+<span class="stat-label">週的密集演練</span>
+</div>
+<div class="stat-card stat-green">
+<span class="stat-number">5</span>
+<span class="stat-label">個評分維度</span>
+</div>
+<div class="stat-card stat-blue">
+<span class="stat-number">100%</span>
+<span class="stat-label">對手盲測</span>
+</div>
+<div class="stat-card stat-orange">
+<span class="stat-number">1</span>
+<span class="stat-label">個可重用 SKILL</span>
+</div>
+</div>
+</section>
+<hr />
+<section class="content-section">
+<h2>為什麼要做這件事</h2>
+<p>我們公司正走在從傳統廣告往 AI 服務轉型的路上，這不是一句口號，而是接下來每個人手上的活都會被重新定義。</p>
+<p>過去這一年，大家應該都用過 ChatGPT、Notebook LM，甚至試著讓 AI 幫忙寫過簡報。但我觀察到一個現象：<strong>多數人停在「會問」，卻沒走到「會打包」這一步</strong>。意思是，每次跟 AI 對話都是從零開始，下次遇到類似任務還是再 prompt 一遍，沒有累積，也沒辦法交給別人重複使用。</p>
+<p>這次的教育訓練，我想帶大家走過一次完整的循環——從一個業務題目出發，做出一份可上線的成果，再把過程中最關鍵的 AI 操作流程，封裝成一個 <strong>SKILL</strong> 工具。然後，最殘酷的一關：把這個 SKILL 交給對手組去測試，看它到底是「神器」還是「自己人才看得懂的祕笈」。</p>
+<p>這並不是要比誰贏，而是要讓每個人親手體驗一次：<strong>好用的 AI 工具長什麼樣子，跟你寫得很 high 但別人完全用不下去的工具，差距在哪裡。</strong></p>
+</section>
+<hr />
+<section id="overview" class="content-section">
+<h2>任務概覽</h2>
+<table>
+<caption class="sr-only">任務概覽</caption>
+<thead>
+<tr>
+<th scope="col">項目</th>
+<th scope="col">內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主題</td>
+<td>從零打造一份《職人互動生存指南》HTML 網頁（含 GA4 與 SEO 基礎）</td>
+</tr>
+<tr>
+<td>編組</td>
+<td>A 組、B 組，每組 2 位 PM ＋ 2 位設計師</td>
+</tr>
+<tr>
+<td>時程</td>
+<td>Week 1 發布日（30 分鐘）→ 私下進行期（1～2 週）→ Week 2 或 3 發表日（30 分鐘）</td>
+</tr>
+<tr>
+<td>最終產出</td>
+<td>① 上線的 GitHub Pages 網址 ② 5 分鐘思路簡報 ③ 一個可重複使用的 SKILL 工具</td>
+</tr>
+</tbody>
+</table>
+<p>整個訓練的精神是：<strong>不打斷大家的日常專案</strong>，而是把開發時間切碎、塞進兩週裡，讓大家彈性消化。真正的緊張感壓縮在頭尾兩個 30 分鐘。</p>
+</section>
+<hr />
+<section class="content-section">
+<h2>📍 Week 1 發布日｜軍備競賽啟動（30 分鐘）</h2>
+<p>開場這 30 分鐘很短，但決定了後面兩週的方向，請務必全員到齊。</p>
+<p><strong>1. 規則宣達</strong></p>
+<p>說明任務終極目標——產出一份含 <strong>GA4 埋碼</strong> 與 <strong>SEO 基礎</strong> 的《職人互動生存指南》HTML 網頁，並把開發流程提煉為專屬的 SKILL 工具。簡報、評分標準、繳交格式都會在這一段一次講清楚。</p>
+<p><strong>2. 命運抽籤</strong></p>
+<p>兩大陣營現場抽出各自的指南主題。題目池會包含像是「行銷新人入職指南」、「業務 AE 接案 SOP」、「設計師接需求生存術」、「跟客戶開會不踩雷」這類貼近日常的主題——抽到什麼就做什麼，不能換。</p>
+<p>（這一關之所以要抽，是因為現實工作中，題目從來不是你選的。學會在限定條件下生出成果，本身就是一種能力。）</p>
+<p><strong>3. 戰略結盟</strong></p>
+<p>各組有 <strong>10 分鐘</strong> 快速決定兩件事：</p>
+<ul>
+<li>私下協作的溝通渠道（Slack、Notion、LINE 群——你們挑）</li>
+<li>初步分工策略（誰主攻內容、誰負責視覺、誰盯 GitHub 部署、誰封裝 SKILL）</li>
+</ul>
+<p>10 分鐘很趕，但這正是訓練的一部分——逼大家在資訊不完整的情況下先做決定，再邊做邊修。</p>
+</section>
+<hr />
+<section class="content-section">
+<h2>📍 私下進行期｜各自爬山與火力升級（1～2 週）</h2>
+<p>這段時間就是各組的舞台，我跟其他主管不會干預進度。</p>
+<p><strong>1. 自由開發</strong></p>
+<p>團隊在不影響日常專案的前提下，彈性安排時間推進。可以週末衝刺、可以午休 stand-up、可以晚上線上開會——怎麼運作由你們決定。</p>
+<p><strong>2. 技術無限制</strong></p>
+<p>這是這次訓練的重點：<strong>不要被工具框住</strong>。</p>
+<ul>
+<li>想直接詠唱 OpenAI 或 Claude 生 Code？請便</li>
+<li>想用 <strong>n8n</strong> 串自動化流程去爬資料？放手做</li>
+<li>想用 Cursor、Windsurf、v0 之類的 AI IDE 開發？沒問題</li>
+<li>想接外部 API、寫爬蟲、用 Notebook LM 分析參考文獻？通通歡迎</li>
+</ul>
+<p>唯一的條件是：<strong>最終要能把這些流程封裝成「任何人都能用的 SKILL 工具」</strong>。換句話說，你今天用得多 fancy 沒人在乎，但下週的對手如果用不下去，就等於白做。</p>
+<p><strong>3. 提交軍備</strong></p>
+<p>發表日前一天截止，各組需準備好：</p>
+<ul>
+<li>GitHub Pages 上線網址（可打開、可被對手查看）</li>
+<li>SKILL 工具包（含使用說明文件）</li>
+<li>5 分鐘思路簡報</li>
+</ul>
+<p>繳交格式與位置會另行通知。</p>
+</section>
+<hr />
+<section class="content-section">
+<h2>📍 Week 2 或 3 發表日｜終極火力對決與盲測（30 分鐘）</h2>
+<p>整個訓練的高潮在這 30 分鐘。建議全員出席當觀眾，因為對手在台上犯的錯，往往就是你下次也會犯的錯。</p>
+<p><strong>1. 火力展示（10 分鐘）</strong></p>
+<p>A、B 兩組輪流上台 <strong>5 分鐘</strong>，快速展示上線的網頁，並精要說明背後的 AI 開發思路。重點要交代：</p>
+<ul>
+<li>哪一段你們用了 <strong>Notebook LM</strong> 做資料分析？</li>
+<li>UI/UX 與 PPT 轉 HTML 是怎麼協作的？</li>
+<li>哪些段落讓 AI 寫程式、哪些用爬蟲、哪些手工調整？</li>
+<li>最大的坑是什麼？怎麼繞過去？</li>
+</ul>
+<p>記住：這份簡報不是給我看的，是給對手看的——因為下一關他們要用你們的 SKILL。</p>
+<p><strong>2. SKILL 盲測大會（15 分鐘）</strong></p>
+<p>兩軍正式 <strong>交換 SKILL 工具</strong>。</p>
+<p>現場出一個 <strong>突發小考題</strong>（例如原本做「行銷新人指南」，現場抽到「國外出差生存指南」、「新進工程師到職 SOP」之類的全新主題），雙方必須在限定時間內，用對方的工具產出初步結果。</p>
+<p>如果情況允許，會邀請 <strong>May</strong> 一起來當這場盲測的客座評審，增加趣味也增加客觀性。</p>
+<p>這時候會發生兩種狀況：</p>
+<ul>
+<li><strong>狀況一</strong>：對方輸入後，SKILL 順利跑出像樣的結果。恭喜，你們真的做到了「設計給別人用」這件事</li>
+<li><strong>狀況二</strong>：對方一輸入就卡關，或產出的東西看起來不像給人用的。這時候你會親身感受到「文件寫得不夠清楚」、「沒做防呆」的代價</li>
+</ul>
+<p>這個階段不是要羞辱誰，而是要讓大家親身感受：<strong>設計一個工具給別人用，比自己用難十倍</strong>。這也是我們未來在做產品、做服務時，每天都要面對的功課。</p>
+<h3>3. 覆盤與頒獎（5 分鐘）</h3>
+<p>針對兩組工具的 <strong>「防呆程度」</strong> 與 <strong>「自動化潛力」</strong> 做總結，選出獲勝隊伍。</p>
+<p>獎品不是重點（雖然會有），重點是覆盤時聽到的觀察——那些你自己悶頭做兩週看不見、但旁觀者一眼就看穿的盲點。</p>
+</section>
+<hr />
+<section id="scoring" class="content-section">
+<h2>評分維度（給講師與客座評審參考）</h2>
+<table>
+<caption class="sr-only">評分維度</caption>
+<thead>
+<tr>
+<th scope="col">維度</th>
+<th scope="col">看什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>成果完整度</td>
+<td>網站是否真的上線、能不能打開、GA4 與 SEO 是否確實落地</td>
+</tr>
+<tr>
+<td>流程清晰度</td>
+<td>簡報能不能讓沒參與的人聽懂你們做了什麼</td>
+</tr>
+<tr>
+<td>SKILL 防呆度</td>
+<td>對方組能否在沒人指導下產出像樣結果</td>
+</tr>
+<tr>
+<td>自動化潛力</td>
+<td>SKILL 是否真的把人工步驟壓到最低，而不是換湯不換藥</td>
+</tr>
+<tr>
+<td>協作流暢度</td>
+<td>PM 與設計師有沒有真的跨過原本的角色界線</td>
+</tr>
+</tbody>
+</table>
+<p>評分不是重點，但這五個維度會幫助你們自己 review：哪裡做得好、哪裡有進步空間。</p>
+</section>
+<hr />
+<section class="content-section">
+<h2>給大家的話</h2>
+<p>這次的訓練，我不期待大家做出多漂亮的成果（雖然如果做得漂亮，我會很高興）。我更想看到的是：</p>
+<ul>
+<li>設計師願意打開 terminal 試一次 <code>git push</code></li>
+<li>PM 願意動手改 HTML 而不是只開規格</li>
+<li>大家在卡關時，第一個反應是「我來問問 AI」而不是「等別人來教我」</li>
+</ul>
+<p>AI 的 iPhone 時刻已經來了。我們可以選擇等別人帶我們走，也可以選擇自己先走幾步。這次的演練，就是給大家一個安全的場域，去試、去錯、去學會用新的方式工作。</p>
+<p>兩週後見，期待看到大家的成果——更期待看到大家交換 SKILL 那一刻的表情。</p>
+<p><strong>Sean</strong></p>
+</section>
+</div>
+</main>
+</body>
+</html>
